@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="js/mui.picker.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/mui.poppicker.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/city.data.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/mui.dtpicker.js" type="text/javascript" charset="utf-8"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/mui.picker.css"/>
+    <link rel="stylesheet" type="text/css" href="css/mui.poppickekr.css"/>
+    <link rel="stylesheet" type="text/css" href="css/mui.dtpicker.css"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	mui('.mui-scroll-wrapper').scroll({
+               	 scrollY: true, //是否竖向滚动
+				 scrollX: false, //是否横向滚动
+				 startX: 0, //初始化时滚动至x
+				 startY: 0, //初始化时滚动至y
+				 indicators: true, //是否显示滚动条
+				 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+				 bounce: true //是否启用回弹
+        });
+        //mui('.mui-scroll-wrapper').scroll();
+    </script>
+</head>
+<body>
+	<!--菜单栏根容器-->
+	<div class="mui-off-canvas-wrap mui-draggable" >
+		<!--菜单栏容器-->
+		<aside id="offCanvasSide" class="mui-off-canvas-left" >
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll" style="color: white;">
+					<header>
+						<div class="mui-title" style="color: white;">
+						<a href="#" class="mui-title">侧滑菜单</a>
+					</div>
+					</header>
+					
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell"></li>
+						<li class="mui-table-view-cell"></li>
+						<li class="mui-table-view-cell"></li>
+					</ul>
+					
+					<div class="mui-input-group">
+						<a href="daily.html">日报</a>
+					</div>
+					
+					
+				</div>
+			</div>
+		</aside>
+	
+	<!--主页面-->
+	<div class="mui-inner-wrap">
+	<header class="mui-bar mui-bar-nav">
+		<a href="#" class="mui-title">MUI功能测试 </a>
+		<a id="memu" href="#offCanvasSide" class="mui-icon mui-icon-bars mui-pull-left"></a>
+		<div class="" style="margin-top: 12px;margin-right: 5px;">
+			<a href="Inspection.html" class="mui-pull-right" style="color: #000000;">检验</a>	
+		</div>
+		<script type="text/javascript">
+			// 监听tap事件，解决 a标签 不能跳转页面问题
+			mui('body').on('tap','a',function(){document.location.href=this.href;});
+			document.getElementById('offCanvasSide').addEventListener('tap',function  () {
+				mui('.mui-off-canvas-wrap').offCanvas('show');	
+			});	
+		</script>
+	</header>
+	<div class="mui-content">
+		
+		<div class=" mui-scroll-wrapper" style="top: 45px;bottom: 0px;">
+				<div class="mui-scroll">
+					
+					<div class="mui-card">
+							<ul class="mui-table-view">
+							<script type="text/javascript">
+								mui('.mui-scroll-wrapper').scroll();
+							</script>
+							<li class="mui-table-view-cell mui-collapse">
+								<a href="#" class="mui-navigate-right">表单</a>
+								<div class="mui-collapse-content">
+									<form class="mui-input-group" id="form">
+										<div class="mui-input-row mui-search">
+											<label class="mui-hidden">Search</label>
+											<input type="search" name="col7" placeholder="Search" x-webkit-speech="" x-webkit-grammar="builtin:search" lang="zh-CN">
+										</div>
+										<div class="mui-input-row">
+											<label>Input</label>
+											<input type="text" id=" col1" placeholder="普通文本框"/>
+										</div>
+										<div class="mui-input-row">
+											<label>Input</label>
+											<input type="text" class="mui-input-numbox" placeholder="数字文本框"/>
+										</div>
+										<div class="mui-input-row">
+											<label>Input</label>
+											<input type="text" class="mui-input-password" id=" col5" placeholder="密码文本框"/>
+										</div>
+										<div class="mui-input-row">
+											<label>Input</label>
+											<input type="text" class="mui-input-range" id=" col6" placeholder="文本框"/>
+										</div>
+										<div class="mui-input-row">
+											<label>Input</label>
+											<input type="text" id=" col2" class="mui-input-clear" placeholder="可清除文本框"/>
+										</div>
+										<div class="mui-input-row">
+											<label>Input</label>
+											<input type="text" id=" col4" class="mui-input-speech" placeholder="语音输入"/>
+										</div>
+										<div class="mui-input-row mui-left">
+                                                                   <!--按钮居右？？                                                          -->
+											<button id="button" type="button" class="mui-btn mui-btn-primary mui-btn-outlined" style="margin-right: 23%;" >OK</button>
+											<button type="reset" class="mui-btn mui-btn-primary mui-btn-outlined" style="margin-right: 20%;width: 70px;">Clear</button>
+										</div>
+										
+									<script type="text/javascript">
+										document.getElementById('button').addEventListener('tap',function () {
+											var check=true;
+											mui("#form input").each(function() {
+												//若当前input为空，则alert提醒 
+												if(!this.value || this.value.trim() == "") {
+												    var label = this.previousElementSibling;
+												    mui.alert(label.innerText + "不允许为空");
+												    check = false;
+												    return false;
+												}
+												}); //校验通过，继续执行业务逻辑 
+												if(check){
+												    mui.alert('验证通过!')
+												}
+										})			
+											
+									</script>
+									</form>
+								</div>
+								
+							</li>
+							<li class="mui-table-view-cell mui-collapse">
+								<a href="#" class="mui-navigate-right">图片轮播</a>
+								<div class="mui-collapse-content">
+									<div class="mui-slider">
+										
+									<div class="mui-slider-group mui-slider-loop">
+										<div class="mui-slider-item mui-slider-duplicate">
+											<a href="#"><img src="img/cbd.jpg"/></a>
+										</div>
+										<div class="mui-slider-item ">
+											<a href="#"><img src="img/muwu.jpg"/></a>
+										</div>
+										<div class="mui-slider-item">
+											<a href="#"><img src="img/shuijiao.jpg"/></a>
+										</div>
+										<div class="mui-slider-item ">
+											<a href="#"><img src="img/yuantiao.jpg"/></a>
+										</div>
+										<div class="mui-slider-item mui-slider-duplicate">
+											<a href="#"><img src="img/cbd.jpg"/></a>
+										</div>
+										<div class="mui-slider-item">
+											<a href="#"><img src="img/muwu.jpg"/></a>
+										</div>
+									</div>
+								</div>
+								</div>
+							</li>
+							<li class="mui-table-view-cell mui-collapse">
+								<a href="#" class="mui-navigate-right">文字排版</a>
+								<div class="mui-collapse-content">
+									<h1 class="mui-text-center">我跟小红是好朋友</h1>
+									<h2 class="mui-text-right">我跟小红是好朋友</h2>
+									<h4 class="mui-text-left">我跟小红是好朋友</h4>
+									<h4 class="mui-text-right">我跟小红是好朋友</h4>
+									<h5 class="mui-text-justify">我跟小红是好朋友</h5>
+								</div>
+							</li>
+							<li class="mui-table-view-cell mui-collapse">
+								<a href="#" class="mui-navigate-right">卡片</a>
+								<div class="mui-collapse-content">
+									<div class="mui-card">
+										<div class="mui-card-header mui-card-media">
+											<img class="mui-media-object" src="img/muwu.jpg"/>
+											<div class="mui-media-body">
+												小志
+												<p>发表于2018/07/09</p>
+											</div>
+										</div>
+										<div class="mui-card-content">
+											<img src="img/shuijiao.jpg"/>
+											<p>和猫一起生活。</p>
+										</div>
+										<div class="mui-card-footer">
+											<p class="mui-text-center">like</p>
+											<p class="mui-text-left">comment</p>
+											<p class="mui-text-right">Read more</p>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="mui-table-view-cell mui-collapse">
+								<a href="#" class="mui-navigate-right">checkbox</a>
+								<div class="mui-collapse-content mui-input-group">
+									<div class="mui-input-row mui-checkbox">
+										<label>checkbox</label>
+										<input type="checkbox" name="checkbox1" id="checkbox1" value="Item1" />
+									</div>
+									<div class="mui-checkbox mui-input-row mui-left">
+										<label>checkbox</label>
+										<input type="checkbox" name="checkbox2" id="checkbox2" value="Item2" />
+										
+									</div>
+									<div class="mui-input-row mui-checkbox mui-left">
+										<label>checkbox</label>
+										<input type="checkbox" name="checkbox4" id="checkbox4" value="Item4" />
+									</div>
+								</div>
+							</li>
+							<li class="mui-table-view-cell mui-collapse">
+								<a href="#" class="mui-navigate-right">dialog消息框</a>
+								<div class="mui-collapse-content mui-input-group mui-content-padded">
+									<button class="mui-input-row mui-btn mui-btn-primary mui-btn-outlined" id="alert">警告框</button>
+									<button class="mui-input-row mui-btn mui-btn-green mui-btn-outlined" id="confirm">确认框</button>
+									<button class="mui-input-row mui-btn mui-btn-danger mui-btn-outlined" id="promote">输入对话框</button>
+									<button class="mui-input-row mui-btn mui-btn-blue mui-btn-outlined" id="toast">自动消失框</button>
+									<div id='info'>
+									</div>
+								</div>
+								<script type="text/javascript">
+										document.getElementById('alert').addEventListener('tap',function  () {
+											mui.alert('很高兴跳出来哈哈哈','Hell Test','确认',function () {
+												//document.getElementById('info').innerText="你刚刚关闭了警告框";
+												mui.toast('你刚刚关闭了警告框');
+											});
+										});
+										document.getElementById('confirm').addEventListener('tap',function  () {
+											mui.confirm('你是小公举吗？','Hell Test',['Yes','No'],function (e) {
+												if(e.index==0){
+													mui.toast('你这个居居女孩！');
+												}else{
+													mui.toast('不，你是我的小公举哦！');
+												}
+											});
+										});
+										document.getElementById('promote').addEventListener('tap',function  () {
+											mui.prompt('谁是你最喜欢的朋友？','最可爱的vikki','Hello Test',['OK','Give up'],function (e) {
+												if(e.index==0){
+													document.getElementById('info').innerText="你最喜欢的朋友是"+e.value;	
+												}else{
+													mui.toast("你放弃回答。");
+												}
+												
+											});
+										});
+										document.getElementById('toast').addEventListener('tap',function  () {
+											mui.toast('欢迎来我家玩哦>-<!');
+										})
+									</script>
+							</li>
+							<li class="mui-table-view-cell mui-collapse">
+								<a href="#" class="mui-navigate-right">Grid栅格</a>
+								<div class="mui-content mui-collapse-content"><!--
+									问题描述：每一个slider右边有一定的灰色。问题在于图片大小不对，没有匹配宽度。
+									操作：在slider上面加一个mui-content的div包裹，
+									同时把mui-collpse-content也移到这个div中。效果不变。
+									再把每个grid里的li中的img和div（mui-media-body）包在一个a中，屏幕自适应，大小合适。
+									Tip:Grid的套路为mui-content->mui-row(图片会变小，应该与mui-media有关)/mui-grid-view->mui-col-xs-[1-12]/mui-col-sm-[1-12]
+									->li->a->grid单个框中的内容
+									嵌套时，content在最外层。
+									?mui-media/mui-card-media/mui-media-body/mui-media-object用法
+									?mui-row/mui-grid-view的用法
+									?图片与数字框之间有灰色细线。li格式?
+								-->
+								<div class="mui-slider ">
+									<div class="mui-slider-group mui-slider-loop">
+										<div class="mui-slider-item mui-slider-item-duplicate">
+											<ul class="mui-table-view mui-grid-view">
+							                    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+							                    	<a href="#" >
+							                    	<img class="mui-media-object" src="img/cbd.jpg">
+							                            <div class="mui-media-body">Color of SIP CBD</div></a>
+							                    </li>
+							                    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+							                    	<a href="#" ><img class="mui-media-object" src="img/muwu.jpg">
+							                            <div class="mui-media-body">静静看这世界</div></a>
+							                    </li>
+							                </ul>
+										</div>
+										<div class="mui-slider-item">
+											<ul class="mui-table-view mui-grid-view">
+							                    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+							                    	<a href="#" ><img class="mui-media-object" src="img/shuijiao.jpg">
+							                        <div class="mui-media-body">Sleep together.</div></a>
+							                    </li>
+							                    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+							                    	<a href="#" ><img class="mui-media-object" src="img/yuantiao.jpg">
+							                            <div class="mui-media-body">Live in the world.</div></a>
+							                    </li>
+							                </ul>
+										</div>
+										<div class="mui-slider-item">
+											<ul class="mui-table-view mui-grid-view">
+							                    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+							                    	<a href="#" ><img class="mui-media-object" src="img/cbd.jpg">
+							                            <div class="mui-media-body">Color of SIP CBD</div></a>
+							                    </li>
+							                    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+							                    	<a href="#" ><img class="mui-media-object" src="img/muwu.jpg">
+							                            <div class="mui-media-body">静静看这世界</div></a>
+							                    </li>
+							                </ul>
+										</div>
+										<div class="mui-slider-item mui-slider-item-duplicate">
+											<ul class="mui-table-view mui-grid-view">
+							                    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+							                    	<a href="#" ><img class="mui-media-object" src="img/shuijiao.jpg">
+							                        <div class="mui-media-body">Sleep together.</div></a>
+							                    </li>
+							                    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+							                    	<a href="#" ><img class="mui-media-object" src="img/yuantiao.jpg">
+							                            <div class="mui-media-body">Live in the world.</div></a>
+							                    </li>
+							                </ul>
+										</div>
+										
+									</div>
+									<div class="mui-slider-indicator" style="position: static;background-color: #fff;">
+								            <span class="mui-action mui-action-previous mui-icon mui-icon-back"></span>
+								            <div class="mui-number">
+								                <span>1</span> / 2
+								            </div>
+								            <span class="mui-action mui-action-next mui-icon mui-icon-forward"></span>
+								    </div>
+								</div>
+								</div>	
+							</li>
+							<li class="mui-table-view-cell mui-collapse">
+								<a href="#" class="mui-navigate-right">图标</a>
+								<div class="mui-content mui-collapse-content">
+									<ul id='icons' class="mui-table-view mui-grid-view">
+										<script type="text/javascript">
+											var a=[];
+											a=['mic','micoff','minus','more','back','camera','bars','chat','map','circle','clear',
+											,'close','compose','contact','download','email','eye','flag','help','home',
+											,'image','info','list','location','loop','paperclip','pengyouquan','paperplane',
+											,'person','personadd','phone','plus','weixin','weibo','videocam','star','qq','upload'];
+											mui.each(a,function  (index,item) {
+												//document.writeln('<li class="mui-table-view-cell mui-media mui-col-xs-6 ">');
+												//document.writeln('<a href="#" >');
+												//document.writeln('<span class="mui-icon mui-icon-'+item+'"><div class="mui-media-body">'+item+'</div>');
+												//document.writeln('</a></li>')
+												var li=document.createElement('li');
+												li.className='mui-table-view-cell mui-collapse mui-media mui-col-xs-6';
+												var a=document.createElement('a');
+												var span=document.createElement('span');
+												span.className='mui-icon mui-icon-'+item;
+												var div=document.createElement('div');
+												div.className='mui-media-body';
+												div.innerText=item;
+												a.appendChild(span);
+												a.appendChild(div);
+												li.appendChild(a);
+												var icons= document.getElementById('icons');
+												icons.appendChild(li);	
+											})
+										</script>
+									</ul>
+								</div>
+							</li>
+							<!--
+								css设置一下可以删除掉li的下面的线。
+								.mui-table-view-cell:after{
+									height:0
+								}
+								?下拉栏跟第一行图标之间有白色间隙，列表也是
+							-->
+							<li class="mui-table-view-cell mui-collapse">
+								<a href="#" class="mui-navigate-right">列表</a>
+								<div class="mui-collapse-content">
+									<ul class="mui-table-view">
+										<li class="mui-table-view-cell mui-collapse">
+											<a href="#" class="mui-navigate-right">导航箭头</a>
+											<div class="mui-collapse-content"></div>
+										</li>
+										<li class="mui-table-view-cell">
+												数字角标<span class="mui-badge mui-badge-danger">1</span>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img src="img/cbd.jpg" class="mui-media-object mui-pull-left"/>
+												<div class="mui-media-body">
+													城市
+													<p class="mui-ellipsis">如果有一天我变得很有钱，我会买下所有难得一见的销量，让所有可怜的孩子不再胆怯，邪恶的人不再掌握话语权。</p>
+												</div>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img src="img/muwu.jpg" class="mui-media-object mui-pull-left"/>
+												<div class="mui-media-body">
+													城市
+													<p class="mui-ellipsis">青石板藏着谁的梦呀，一场秋雨，散落一地花，旅人匆匆的赶路呀，你不问他不搭。</p>
+												</div>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img src="img/shuijiao.jpg" class="mui-media-object mui-pull-left"/>
+												<div class="mui-media-body">
+													城市
+													<p class="mui-ellipsis">我们一起学猫叫，一起喵喵喵喵喵，在你面前撒个娇，一起喵喵喵喵喵。</p>
+												</div>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="mui-table-view-cell mui-collapse">
+								<a href="#" class="mui-navigate-right">遮罩mask</a>
+								<div class="mui-collapse-content">
+									<ul class="mui-table-view">
+									</ul>
+								</div>
+							</li>
+							<li class="mui-table-view-cell mui-collapse">
+								<a href="#" class="mui-navigate-right">选择按钮radio</a>
+								<div class="mui-collapse-content">
+									<form class="mui-input-group">
+										<div id="normal"  class="mui-input-row mui-hidden">
+											<label>Input</label>
+											<input type="text" placeholder="普通文本框" />
+										</div>
+										<div id="password" class="mui-input-row mui-hidden">
+											<label>Input</label>
+											<input type="text" class="mui-input-password" placeholder="密码文本框" />
+										</div>
+										<div id="speech" class="mui-input-row mui-hidden">
+											<label>Input</label>
+											<input type="text" class="mui-input-speech" placeholder="语音文本框" />
+										</div>
+										<div id="clear" class="mui-input-row mui-hidden">
+											<label>Input</label>
+											<input type="text" class="mui-input-clear" placeholder="可清除文本框" />
+										</div>
+										<!--radio结构
+											mui-radio->input:style='radio'
+											Tip:同一问题的选项name相同，才能为单选效果。
+											
+										-->
+										<div class="mui-radio mui-input-row">
+											<label >普通文本框</label>
+											<input type="radio" name="style" value="input" />
+										</div>
+										<div class="mui-radio mui-input-row">
+											<label >密码文本框</label>
+											<input type="radio" name="style" value="password" />
+										</div>
+										<div class="mui-radio mui-input-row">
+											<label >语音输入文本框</label>
+											<input type="radio" name="style"  value="speech" />
+										</div>
+										<div class="mui-radio mui-input-row">
+											<label >可清除文本框</label>
+											<input type="radio"  name="style" value="clear" />
+										</div>
+									</form>
+									<script type="text/javascript">
+										mui('.mui-input-group').on('change','input',function  () {
+											if(this.checked){
+												switch (this.value){
+													case 'input':
+														document.getElementById('normal').className='mui-input-row';
+														document.getElementById('password').className='mui-input-row mui-hidden';
+														document.getElementById('clear').className='mui-input-row mui-hidden';
+														document.getElementById('speech').className='mui-input-row mui-hidden';
+														break;
+													case 'password':
+														document.getElementById('password').className='mui-input-row';
+														document.getElementById('clear').className='mui-input-row mui-hidden';
+														document.getElementById('normal').className='mui-input-row mui-hidden';
+														document.getElementById('speech').className='mui-input-row mui-hidden';
+														break;
+													case 'speech':
+														document.getElementById('speech').className='mui-input-row';
+														document.getElementById('password').className='mui-input-row mui-hidden';
+														document.getElementById('normal').className='mui-input-row mui-hidden';
+														document.getElementById('clear').className='mui-input-row mui-hidden';
+														break;
+													case 'clear':
+														document.getElementById('clear').className='mui-input-row';
+														document.getElementById('password').className='mui-input-row mui-hidden';
+														document.getElementById('normal').className='mui-input-row mui-hidden';
+														document.getElementById('speech').className='mui-input-row mui-hidden';
+														break;
+												}
+											}
+										})
+									</script>
+								</div>
+							</li>
+							<li class="mui-table-view-cell mui-collapse ">
+								<a href="#" class="mui-navigate-right">数字框</a>
+								<div class="mui-collapse-content">
+									<h5 class="mui-content-padded">默认</h5>
+									<div class="mui-numbox">
+										<button type="button" class="mui-btn mui-btn-numbox-minus">
+											<span class="mui-icon mui-icon-minus"></span>
+										</button>
+										<input type="number" class="mui-input-numbox" />
+										<button type="button" class="mui-btn mui-btn-numbox-plus">
+											<span class="mui-icon mui-icon-plus"></span>
+										</button>
+									</div>
+									<h5 class="mui-content-padded">大小控制在1~9</h5>
+									<div class="mui-numbox" data-numbox-min="1" data-numbox-max="9">
+										<button type="button" class="mui-btn mui-btn-numbox-minus">
+											<span class="mui-icon mui-icon-minus"></span>
+										</button>
+										<input type="number" class="mui-input-numbox" value="5" />
+										<button type="button" class="mui-btn mui-btn-numbox-plus">
+											<span class="mui-icon mui-icon-plus"></span>
+										</button>
+									</div>
+									<h5 class="mui-content-padded">大小控制10~90，步幅10</h5>
+									<div class="mui-numbox" data-numbox-min="10" data-numbox-max="90" data-numbox-step="10">
+										<button type="button" class="mui-btn mui-btn-numbox-minus">
+											<span class="mui-icon mui-icon-minus"></span>
+										</button>
+										<input type="number" class="mui-input-numbox" value="15" />
+										<button type="button" class="mui-btn mui-btn-numbox-plus">
+											<span class="mui-icon mui-icon-plus"></span>
+										</button>
+									</div>
+									<h5 class="mui-content-padded">取值</h5>
+									<div id="num" class="mui-numbox" data-numbox-min="1" data-numbox-max="49" data-numbox-step="3">
+										<button type="button" class="mui-btn mui-btn-numbox-minus">
+											<span class="mui-icon mui-icon-minus"></span>
+										</button>
+										<input  type="number" class="mui-numbox-input" value="6" />
+										<button type="button" class="mui-btn mui-btn-numbox-plus">
+											<span class="mui-icon mui-icon-plus"></span>
+										</button>
+										
+									</div>
+									<!--
+										JSApPI,getValue():mui("#mui-numbox_id").numbox().getValue();
+										id是总的numbox的id，不是input的id
+									-->
+									<button id="btn" class="mui-btn " type="button" >取值</button>
+									<script type="text/javascript">
+										mui.init();
+										document.getElementById('btn').addEventListener('tap',function  () {
+											//mui.alert('当前值：'+ document.getElementById('num').value,'取值框','OK');
+											mui.alert('当前值：'+ mui('#num').numbox().getValue(),'取值框','OK');
+										})	
+										
+									</script>
+								</div>
+							</li>
+							<li class="mui-table-view-cell mui-collapse">
+								<a href="popover.html" class="mui-navigate-right">弹出菜单</a>
+								<div class="mui-collapse-content">
+									
+								</div>
+							</li>
+							<li class="mui-table-view-cell mui-collapse">
+								<a href="#" class="mui-navigate-right">选择器</a>
+								<div class="mui-collapse-content">
+									<div class="">
+										<h5 class="">原生选择器</h5>
+										<select name="options" class="mui-btn mui-btn-block">
+											<option value="option1">选项1</option>
+											<option value="option2">选项2</option>
+											<option value="option3">选项3</option>
+											<option value="option4">选项4</option>
+											<option value="option5">选项5</option>
+											<option value="option6">选项6</option>
+										</select>
+									</div>
+									<h5 class="mui-content-padded">普通示例</h5>
+									<button id='showUserPicker' class="mui-btn mui-btn-block" type='button'>一级选择示例 ...</button>
+									<div id='userResult' class="ui-alert"></div>
+									<h5 class="mui-content-padded">级联示例</h5>
+									<button id='showCityPicker' class="mui-btn mui-btn-block" type='button'>二级联动示例 ...</button>
+									<div id='cityResult' class="ui-alert"></div>
+									<button id='showCityPicker3' class="mui-btn mui-btn-block" type='button'>三级联动示例 ...</button>
+									<div id='cityResult3' class="ui-alert"></div>
+									
+										<button id='datetime' class="btn mui-btn mui-btn-block" type='button'>选择日期时间</button>
+										<button id='date'  class="btn mui-btn mui-btn-block" type='button' >选择日期</button>
+										<button id='time'  class="btn mui-btn mui-btn-block" type='button' >选择时间</button>
+										<button id='month' class="btn mui-btn mui-btn-block" type='button'>选择月份</button>
+										<button id='hour'  class="btn mui-btn mui-btn-block" type='button' >选择小时</button>
+										<button id='setdate' class="btn mui-btn mui-btn-block" type='button'>选择设定日期</button>
+										<button id='settime' class="btn mui-btn mui-btn-block" type='button' >选择设定时间</button>
+										<div id='dateResult' class="ui-alert"></div>
+								
+									
+									<script type="text/javascript">
+										mui.init();
+										var picker= new mui.PopPicker();
+											picker.setData([{value:'aa',text:'aa'},{value:'bb',text:'bb'} ,{value:'cc',text:'cc'}]);
+										document.getElementById('showUserPicker').addEventListener('tap',function  (event) {
+											
+											picker.show(function  (items) {
+												//Stringify是把JSON变成字符串
+												//document.getElementById('userResult').innerText=JSON.stringify(items);//结果是[{value:'aa',text:'aa'}]
+												document.getElementById('userResult').innerText=items[0].text;//结果是aa
+											});
+										},false)
+										var citypicker= new mui.PopPicker({layer:2});
+											citypicker.setData(cityData);
+										document.getElementById('showCityPicker').addEventListener('tap',function  (event) {
+											
+											citypicker.show(function  (items) {
+												document.getElementById('cityResult').innerText="你选择的城市是："+items[0].text+" "+items[1].text;
+											});
+										},false)
+										/*三联的选择器一加上面的效果全出不来？？？
+										 *
+										var citypikers = new mui.PopPicker({layer:3});
+											citypikers.setData(cityData3);
+										document.getElementById('showCityPickers').addEventListener('tap',function  (event) {
+											
+											citypikers.show(function  (items) {
+												document.getElementById('cityResults').innerText="你选择的城市是："+(items[0] || {}).text+" "+(items[1] || {}).text+" "+(items[2] || {}).text;											})
+											});
+										},false)
+										*/
+										//这段就三联出不来，上面两个都能出来
+										
+										var cityPickers = new mui.PopPicker({
+											layer: 3,
+											button:['cancle','ok']
+										});
+										cityPickers.setData(cityData3);
+										document.getElementById('showCityPicker3').addEventListener('tap', function(event) {
+											cityPickers.show(function(items) {
+												document.getElementById('cityResult3').innerText = "你选择的城市是:" + (items[0] || {}).text + " " + (items[1] || {}).text + " " + (items[2] || {}).text;
+												//返回 false 可以阻止选择框的关闭
+												//return false;
+											});
+										}, false);
+										//日期选择器 
+										document.getElementById('datetime').addEventListener('tap',function  (event) {
+											var datePicker= new mui.DtPicker({
+												"type":"datetime",//设置日历的初始视图模式
+												"beginDate": new Date(2015, 04, 25),//设置开始日期 
+											    "endDate": new Date(2016, 04, 25),//设置结束日期 
+											    "labels": ['Year', 'Mon', 'Day', 'Hour', 'min'],//设置默认标签区域提示语 
+												
+											});
+											datePicker.show(function  (items) {
+												document.getElementById('dateResult').innerText=items.text;
+											});	
+										})
+										document.getElementById('date').addEventListener('tap',function  (event) {
+											var datePicker= new mui.DtPicker({
+												"type":"date",//设置日历的初始视图模式
+												
+											});
+											datePicker.show(function  (items) {
+												document.getElementById('dateResult').innerText=items.text;
+											});	
+										})
+										document.getElementById('time').addEventListener('tap',function  (event) {
+											var datePicker= new mui.DtPicker({
+												"type":"time",//设置日历的初始视图模式
+												
+											});
+											datePicker.show(function  (items) {
+												document.getElementById('dateResult').innerText=items.text;
+											});	
+										})
+										document.getElementById('month').addEventListener('tap',function  (event) {
+											var datePicker= new mui.DtPicker({
+												"type":"month",//设置日历的初始视图模式
+												
+											});
+											datePicker.show(function  (items) {
+												document.getElementById('dateResult').innerText=items.text;
+											});	
+										})
+										document.getElementById('hour').addEventListener('tap',function  (event) {
+											var datePicker= new mui.DtPicker({
+												"type":"hour",//设置日历的初始视图模式
+												
+											});
+											datePicker.show(function  (items) {
+												document.getElementById('dateResult').innerText=items.text;
+											});	
+										})
+										document.getElementById('setdate').addEventListener('tap',function  (event) {
+											var datePicker= new mui.DtPicker({
+												"type":"date",
+												"beginDate": new Date(2010,01,01),//设置开始日期 
+											    "endDate": new Date(2020,01,01),//设置结束日期 
+											});
+											datePicker.show(function  (items) {
+												document.getElementById('dateResult').innerText=items.text;
+											});	
+										})
+										document.getElementById('settime').addEventListener('tap',function  (event) {
+											//mui.alert('datePicker is ok');
+											var datePicker= new mui.DtPicker({
+												"type":"hour",
+												"customData":{"h":[{"text":"上午","value":"上午"},{"text":"下午","value":"下午"},{"text":"晚上","value":"晚上"}]},
+												"labels":["年", "月", "日", "时段"],
+											});
+											datePicker.show(function  (items) {
+												document.getElementById('dateResult').innerText=items.text;
+											});	
+											//datePicker.dispose();
+										})
+										//datePicker.dispose();
+										/*
+										document.getElementById('settime').addEventListener('tap',function(event){
+											var datePicker=new DtPicker({
+												"type":"time",
+												
+											});
+											datePicker.show(function(items){
+												document.getElememtById('dateResult').innerText=items.text;
+											});
+										})*/
+									</script>
+								</div>
+								
+							</li>
+						</ul>	
+					</div>
+
+			</div>	
+			</div>
+			</div>
+	</div>
+	</div>
+</body>
+</html>

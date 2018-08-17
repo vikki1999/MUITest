@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Inspection</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/mui.css"/>
+		 <script src="js/mui.min.js"></script>
+		 <script type="text/javascript" charset="utf-8">
+	      	mui.init();
+	      	
+            mui('.mui-scroll-wrapper').scroll({
+               	 scrollY: true, //是否竖向滚动
+				 scrollX: false, //是否横向滚动
+				 startX: 0, //初始化时滚动至x
+				 startY: 0, //初始化时滚动至y
+				 indicators: true, //是否显示滚动条
+				 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+				 bounce: true //是否启用回弹
+            });
+         
+	      	function plusReady(){
+				// 隐藏滚动条
+				plus.webview.currentWebview().setStyle({scrollIndicator:"vertical"});
+				if(window.plus){
+				plusReady();
+			}else{
+				document.addEventListener('plusready',plusReady,false);
+			}
+			}
+	    </script>
+		</head>
+	<body>
+		<header class="mui-bar mui-bar-nav"  style="background-color: #4CD964;">
+			
+				<button id="back" type="button" class="mui-action-back mui-btn mui-btn-green mui-pull-left" style=" font-size: 17px;padding-top: 3px;padding-left:0px;padding-right: 0px; margin-right:0px; vertical-align: middle;">
+					<span class="mui-icon mui-icon-arrowleft" style="font-size:22px;"></span>返回
+				</button>
+				<button id="close" type="button" class="mui-btn mui-btn-green mui-pull-left" style="font-size:17px;padding-top: 3px; vertical-align: middle;" >关闭</button>
+				<h1 class="mui-title" style="color: white;font-size: 19px;">检查事项</h1>
+				<button id="more" type="button" class="mui-btn mui-btn-green mui-pull-right" style="font-size:17px;padding-top:3px; vertical-align: middle;">更多</button>
+		
+		</header>
+		<div class="mui-content ">
+			<div class="mui-scroll-wrapper" style="top: 45px;bottom: 0px;">
+				<div class="mui-scroll">
+			<ul class="mui-table-view ">
+				<script type="text/javascript">
+					var a=[];
+					a[0]='日常管理：厕所内外无作业工具及杂物乱堆放、乱吊挂、乱晾晒情况，无化粪池、贮粪池臭气外溢和满溢现象';
+					a[1]='整体环境：厕所无明显臭味，无乱拉电线、乱接插头、裸露接线、乱接水管等情况';
+					a[2]='整体环境：墙体无渗漏、破损、漆脱落';
+					a[3]='整体环境：地面平整、无破损等影响厕所环境情况';
+					a[4]='标识标牌：厕所管理制度牌无缺失、无破损';
+					a[5]='设备设施：无垃圾桶破损、不洁、满溢，大小便器（槽）无破损';
+					a[6]='设备设施：无障碍通道、扶手无破损';
+					a[7]='日常管理：配合消防器材（除附设厕所外）';
+					a[8]='日常管理：大小便器（槽）无不洁、无积粪（尿）、堵塞，厕位及地面整洁、不积水';
+					a[9]='标识标牌：公示信息无缺顶、无错误';
+					a[10]='标识标牌：公示信息无缺顶、无错误';
+					a[11]='标识标牌：公示信息无缺顶、无错误';
+					a[12]='标识标牌：公示信息无缺顶、无错误';
+					a[13]='标识标牌：公示信息无缺顶、无错误';
+					a[14]='标识标牌：公示信息无缺顶、无错误';
+					a[15]='标识标牌：公示信息无缺顶、无错误';
+					a[16]='标识标牌：公示信息无缺顶、无错误';
+					mui.each(a,function  (index,item) {
+						var i=index+1;
+						document.writeln('<li class="mui-table-view-cell mui-collapse">');
+						document.writeln('<div class="mui-collapse">');
+						document.writeln('<span class="mui-badge mui-badge-blue mui-left">'+i+'</span>');
+						document.writeln('<a href="#" style="font-size: medium;">'+item+'</a></div></li>');
+					});
+					mui('.mui-scroll-wrapper').scroll();
+				</script>
+			</ul>
+		</div>
+		</div>
+		</div>
+	</body>
+</html>

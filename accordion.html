@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>手风琴</title>
+		<link href="./css/bootstrap.css" rel="stylesheet">
+		<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- Required Javascript -->
+		<script src="./js/jquery.js"></script>
+		<script src="./js/bootstrap-treeview.js"></script>
+		
+	</head>
+	<body>
+		<div id="tree"></div>
+	</body>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			function getTree() {
+			    // Some logic to retrieve, or generate tree structure
+			    return tree;
+			}
+			$('#tree').treeview({data: tree});
+			var tree = [
+			  {
+			    text: "Parent 1",
+			    nodes: [
+			      {
+			        text: "Child 1",
+			        nodes: [
+			          {
+			            text: "Grandchild 1"
+			          },
+			          {
+			            text: "Grandchild 2"
+			          }
+			        ]
+			      },
+			      {
+			        text: "Child 2"
+			      }
+			    ]
+			  },
+			  {
+			    text: "Parent 2"
+			  },
+			  {
+			    text: "Parent 3"
+			  },
+			  {
+			    text: "Parent 4"
+			  },
+			  {
+			    text: "Parent 5"
+			  }
+			];
+		});
+	</script>
+</html>

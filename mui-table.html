@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+    <style>
+        .table {
+                border: 1px solid #cad9ea;
+                color: #666;
+            }
+
+            .table th {
+                background-repeat: repeat-x;
+                height: 30px;
+            }
+
+            .table td,
+            .table th {
+                border: 1px solid #cad9ea;
+                padding: 0 1em 0;
+            }
+
+            .table tr.alter {
+                background-color: #f5fafe;
+            }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	mui('.mui-scroll-wrapper').scroll({
+               	 scrollY: true, //是否竖向滚动
+				 scrollX: false, //是否横向滚动
+				 startX: 0, //初始化时滚动至x
+				 startY: 0, //初始化时滚动至y
+				 indicators: true, //是否显示滚动条
+				 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+				 bounce: true //是否启用回弹
+        });
+          mui('.mui-scroll-wrapper').scroll();
+    </script>
+</head>
+<body>
+    <div class="mui-content">
+    	<div class="mui-scroll-wrapper" style="height: 500px;" >
+    		<div class="mui-scroll">
+    			<div class="mui-card" style="width:375px;">
+    				<div class="mui-card-content" >
+    					
+    				
+    			<table style="width:375px;" class="table" id="tablevalue">
+		            <tr>
+		            	<th style="width: 25%;">姓名</th>
+		            	<th style="width: 25%;">时间</th>
+		            	<th style="width: 25%;">地址</th>
+		            	<th style="width: 25%;">结果</th>
+		            </tr>
+		            <tr>
+		            	<td>1111</td>
+		            	<td>2018/08/07</td>
+		            	<td>三号</td>
+		            	<td>通过</td>
+		            </tr>
+		            <tr>
+		            	<td>超级管理员</td>
+		            	<td>2018/08/07</td>
+		            	<td>测试地点</td>
+		            	<td>通过</td>
+		            </tr>
+		        </table>
+		        <div class="mui-content-padded">
+				<ul class="mui-pagination">
+					<li class="mui-previous">
+						<a href="#">
+							«
+						</a>
+					</li>
+					<li class="">
+						<a href="#">
+							1
+						</a>
+					</li>
+					<li class="">
+						<a href="#">
+							2
+						</a>
+					</li>
+					<li class="">
+						<a href="#">
+							3
+						</a>
+					</li>
+					<li class="">
+						<a href="#">
+							4
+						</a>
+					</li>
+					<li class="mui-active">
+						<a href="#">
+							5
+						</a>
+					</li>
+					<li class="mui-next mui-disabled">
+						<a href="#">
+							»
+						</a>
+					</li>
+				</ul>
+			</div>
+			    </div>
+			   </div>
+    		</div>
+    	</div>
+    </div>
+</body>
+<script type="text/javascript">
+	mui(".mui-scroll-wrapper").scroll();
+	
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+			(function($) {
+				$('.mui-pagination').on('tap', 'a', function() {
+					var li = this.parentNode;
+					var classList = li.classList;
+					if (!classList.contains('mui-active') && !classList.contains('mui-disabled')) {
+						var active = li.parentNode.querySelector('.mui-active');
+						if (classList.contains('mui-previous')) {//previous
+							if (active) {
+								var previous = active.previousElementSibling;
+								console.log('previous', previous);
+								if (previous && !previous.classList.contains('mui-previous')) {
+									$.trigger(previous.querySelector('a'), 'tap');
+								} else {
+									classList.add('mui-disabled');
+								}
+							}
+						} else if (classList.contains('mui-next')) {//next
+							if (active) {
+								var next = active.nextElementSibling;
+								if (next && !next.classList.contains('mui-next')) {
+									$.trigger(next.querySelector('a'), 'tap');
+								} else {
+									classList.add('mui-disabled');
+								}
+							}
+						} else {//page
+							active.classList.remove('mui-active');
+							classList.add('mui-active');
+							var page = parseInt(this.innerText);
+							var previousPageElement = li.parentNode.querySelector('.mui-previous');
+							var nextPageElement = li.parentNode.querySelector('.mui-next');
+							previousPageElement.classList.remove('mui-disabled');
+							nextPageElement.classList.remove('mui-disabled');
+							if (page <= 1) {
+								previousPageElement.classList.add('mui-disabled');
+							} else if (page >= 5) {
+								nextPageElement.classList.add('mui-disabled');
+							}
+						}
+					}
+				});
+			})(mui); 
+		
+</script>
+</html>

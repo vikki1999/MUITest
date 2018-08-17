@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Inspection</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/mui.css"/>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+	      	mui.init();
+	      	
+            mui('.mui-scroll-wrapper').scroll({
+               	 scrollY: true, //是否竖向滚动
+				 scrollX: false, //是否横向滚动
+				 startX: 0, //初始化时滚动至x
+				 startY: 0, //初始化时滚动至y
+				 indicators: true, //是否显示滚动条
+				 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+				 bounce: true //是否启用回弹
+            });
+         
+	      	
+	    </script>
+	    <style type="text/css">
+	    	.mui-switch.mui-active:before{content: '是';}
+			.mui-switch:before{content: '否';}
+	    </style>
+		</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" >
+			<button id="back" class="mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-left" style="color: #000000;">
+				<span class="mui-icon mui-icon-left-nav"></span>
+				返回
+			</button>
+			<button id="back" class="mui-btn mui-btn-link mui-btn-nav mui-pull-left" style="color: #000000;">
+				关闭
+			</button>
+			<button id="back" class=" mui-btn mui-btn-link mui-btn-nav mui-pull-right" style="color: #000000;">
+				更多
+			</button>
+			<a class="mui-title" style="font-size: 18px;">检查事项</a>
+		</header>
+		<div class="mui-content ">
+			
+			<div class="mui-scroll-wrapper" style="top: 45px;bottom: 0px;">
+				<div class="mui-scroll" >
+					<ul class="mui-table-view">
+						<script type="text/javascript">
+							    
+							mui(".mui-scroll-wrapper").scroll();
+						</script>
+						<li class="mui-table-view-cell"><a href="#">Item1</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item2</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item3</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item4</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item5</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item6</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item7</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item8</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item9</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item10</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item1</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item2</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item3</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item4</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item5</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item6</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item7</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item8</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item9</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">Item10</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a href="#popover" id="openPopover" class="mui-btn mui-btn-primary mui-btn-block">打开弹出菜单</a>
+							
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>  
+		<div id="popover" class="mui-popover">
+			<!--
+				Tip：popover需要设置class：“mui-popover”，设置height，另要在mui-content之外！！！
+				
+			-->
+			<div class="mui-popover-arrow"></div>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell"><a href="#">Item1</a></li>
+				<li class="mui-table-view-cell"><a href="#">Item2</a></li>
+				<li class="mui-table-view-cell"><a href="#">Item3</a></li>
+				<li class="mui-table-view-cell"><a href="#">Item4</a></li>
+				<li class="mui-table-view-cell"><a href="#">Item5</a></li>
+			</ul>
+		</div>			
+				
+	</body>
+</html>

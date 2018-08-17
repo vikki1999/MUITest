@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Inspection</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/mui.css"/>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+	      	mui.init();
+	     	mui('.mui-scroll-wrapper').scroll({
+               	 scrollY: true, //是否竖向滚动
+				 scrollX: false, //是否横向滚动
+				 startX: 0, //初始化时滚动至x
+				 startY: 0, //初始化时滚动至y
+				 indicators: true, //是否显示滚动条
+				 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+				 bounce: true //是否启用回弹
+            });
+         
+	      	function plusReady(){			
+				plus.webview.currentWebview().setStyle({scrollIndicator:"vertical"});
+				if(window.plus){
+				plusReady();
+			}else{
+				document.addEventListener('plusready',plusReady,false);
+			}
+			}
+	    </script>
+	    <style type="text/css">
+	    	.mui-switch.mui-active:before{content: '是';font-size:14px;}
+			.mui-switch:before{content: '否';font-size: 14px;}
+			#popover .mui-table-view-cell:after{
+				height:0
+			}
+			#popover .mui-table-view-cell{
+				margin-top: 0px;
+				margin-bottom: 0px;
+				padding-top: 5px;
+				padding-bottom: 5px;
+			}
+			#popover .mui-btn:active{
+				color: white;
+				border: 1px #FF0000;
+				background-color: #FF0000;
+			}
+	    </style>
+		</head>
+	<body>
+		
+		<div class="mui-content ">
+			<div class="mui-scroll-wrapper" style="top: 45px;bottom: 0px;">
+				<div class="mui-scroll">
+					<ul class="mui-table-view ">
+					<script type="text/javascript">
+						var a=[];
+						a=['日常管理：厕所内外无作业工具及杂物乱堆放、乱吊挂、乱晾晒情况，无化粪池、贮粪池臭气外溢和满溢现象',
+						,'整体环境：厕所无明显臭味，无乱拉电线、乱接插头、裸露接线、乱接水管等情况',
+						,'整体环境：墙体无渗漏、破损、漆脱落',
+						,'整体环境：地面平整、无破损等影响厕所环境情况',
+						,'标识标牌：厕所管理制度牌无缺失、无破损',
+						,'设备设施：无垃圾桶破损、不洁、满溢，大小便器（槽）无破损',
+						,'设备设施：无障碍通道、扶手无破损',
+						,'日常管理：配合消防器材（除附设厕所外）',
+						,'日常管理：大小便器（槽）无不洁、无积粪（尿）、堵塞，厕位及地面整洁、不积水',
+						,'标识标牌：公示信息无缺顶、无错误'];
+						mui.each(a,function  (index,item) {
+							var i=index/2+1;
+							document.writeln('<li class="mui-table-view-cell mui-collapse">');
+							document.writeln('<a href="#popover" ><div style="white-space: normal;color: #0062CC;">');
+							document.writeln('<span class="mui-badge mui-badge-blue mui-left">'+i+'</span>');
+							document.writeln(''+item+'</div></a></li>');
+						});
+						mui('.mui-scroll-wrapper').scroll();
+					</script>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="popover" class="mui-popover" style="height: 340px;width: 95%;">
+			<div class="mui-popover-arrow"></div>
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view" >
+					<script type="text/javascript">
+						mui(".mui-scroll-wrapper").scroll();
+					</script>
+						<li class="mui-table-view-cell"> 
+							<div></div>
+							<div class="mui-inline mui-pull-left" style="font-size: 14px;">是否存在问题</div>
+							<div class="mui-switch mui-pull-right">
+								<div class="mui-switch-handle">
+								</div>
+							</div>
+						</li>
+						<li class="mui-table-view-cell" >
+							<div class="row mui-input-row" style="height: 145px">
+								<textarea id='question' class="mui-input-clear question" placeholder="问题描述" style="height: 140px;font-size: 14px;"></textarea>
+							</div>
+						</li>
+						<li class="mui-table-view-cell" >
+							<div id="image-list" class="mui-input-row" style="background-color: white;" >
+								<div id="image-add" type="button" class="mui-btn" style="margin-right: 76%; margin-bottom: 10px;margin-top: 10px;height: 63px;width: 63px;">
+									<!--<p style="font-size: 30px;">&nbsp;&nbsp;+&nbsp;&nbsp;</p>-->
+									<span class="mui-icon mui-icon-plusempty" style="font-size: 34px;"></span>
+								</div>
+								<div id="image-show" type="button" style="margin-right: 46%; margin-bottom: 10px;margin-top: 10px;height: 63px;width: 63px;">
+									
+								</div>
+							</div>
+						</li>
+						<li class="mui-table-view-cell ">
+							<div class="">
+								<button class="mui-btn  mui-btn-outlined" id="cancel" style="width: 49%;">取消</button>
+								<button class=" mui-btn mui-btn-outlined mui-pull-right" id="save" style="width: 49%;">保存</button>
+							</div>
+							<script type="text/javascript">
+								document.getElementById('cancel').addEventListener('tap',function  () {
+									mui('.mui-popover').popover('hide',document.getElementById("cancel"));
+								})
+								document.getElementById('image-add').addEventListener('tap',function () {
+									 plus.gallery.pick( function(path){
+								    	mui.toast(path);
+								    	var img=document.createElement('img');
+								    	img.src=path;
+								    	document.getElementById('image-show').appendChild(img);
+								    }, function ( e ) {
+								    	console.log( "取消选择图片" );
+								    }, {filter:"image"} );
+								})
+							</script>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>  
+	</body>
+</html>
